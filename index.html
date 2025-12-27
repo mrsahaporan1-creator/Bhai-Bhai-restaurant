@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ভাই ভাই হোটেল এন্ড রেস্টুরেন্ট - স্বাদের নিশ্চয়তা</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #FF6347 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #8B0000;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: #FFF8DC;
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .trust-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trust-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #FF6347, #DC143C);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #FFF 0%, #FFF8DC 100%);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #8B0000;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 80px 20px;
+            background: #F5F5F5;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .menu-card-header {
+            background: linear-gradient(45deg, #FF6347, #DC143C);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .menu-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .menu-card-body {
+            padding: 25px;
+        }
+
+        .menu-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: #FFF8DC;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            color: #8B0000;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-detail {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .contact-detail strong {
+            color: #8B0000;
+        }
+
+        /* Order Form */
+        .order-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #8B0000;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #DC143C;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, #DC143C, #8B0000);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220,20,60,0.3);
+        }
+
+        /* Location Section */
+        .location {
+            padding: 80px 20px;
+            background: #F5F5F5;
+        }
+
+        .location-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .location-details {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2C2C2C;
+            color: white;
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            color: #FF6347;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-info {
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .footer-whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            opacity: 0.8;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>ভাই ভাই হোটেল এন্ড রেস্টুরেন্ট</h1>
+            <p class="tagline">স্বাদের নিশ্চয়তা, পরিবারের ভরসা</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/8801917821820" class="btn btn-primary" target="_blank">
+                    📱 WhatsApp অর্ডার
+                </a>
+                <a href="#menu" class="btn btn-secondary">
+                    🍽️ মেনু দেখুন
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">✨</div>
+                    <h3>১০০% পরিষ্কার খাবার</h3>
+                    <p>স্বাস্থ্যসম্মত পরিবেশে তৈরি</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">💰</div>
+                    <h3>সাশ্রয়ী মূল্য</h3>
+                    <p>সবার সাধ্যের মধ্যে সুস্বাদু খাবার</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">⚡</div>
+                    <h3>দ্রুত সার্ভিস</h3>
+                    <p>কম সময়ে গরম খাবার পরিবেশন</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">👨‍👩‍👧‍👦</div>
+                    <h3>পারিবারিক পরিবেশ</h3>
+                    <p>সবার জন্য আরামদায়ক পরিবেশ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">আমাদের সম্পর্কে</h2>
+                <p class="about-text">
+                    ভাই ভাই হোটেল এন্ড রেস্টুরেন্ট গৌরীপুর এলাকার একটি বিশ্বস্ত খাবারের দোকান। আমরা প্রতিদিন তাজা উপাদান দিয়ে পরিষ্কার পরিবেশে সুস্বাদু খাবার তৈরি করি।
+                </p>
+                <p class="about-text">
+                    আমাদের লক্ষ্য হলো স্থানীয় মানুষদের কাছে মানসম্পন্ন, সাশ্রয়ী মূল্যে পুষ্টিকর খাবার পৌঁছে দেওয়া। পরিবারিক পরিবেশে আমরা সবাইকে স্বাগতম জানাই।
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">জনপ্রিয় মেনু</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-card-header">
+                        <h3>🍛 চিকেন বিরিয়ানি</h3>
+                    </div>
+                    <div class="menu-card-body">
+                        <p class="menu-description">
+                            বাসমতি চালে রান্না করা সুগন্ধি চিকেন বিরিয়ানি। দেশি মসলার অপূর্ব স্বাদ।
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-header">
+                        <h3>🥩 গরুর মাংস</h3>
+                    </div>
+                    <div class="menu-card-body">
+                        <p class="menu-description">
+                            তাজা গরুর মাংস দেশি পদ্ধতিতে রান্না। ভাত ও রুটির সাথে পারফেক্ট।
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-header">
+                        <h3>🐟 দেশি মাছ ভাজি</h3>
+                    </div>
+                    <div class="menu-card-body">
+                        <p class="menu-description">
+                            স্থানীয় নদীর তাজা মাছ মসলা দিয়ে ভেজে পরিবেশন করা হয়।
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-header">
+                        <h3>🍚 ভাত ও ডাল</h3>
+                    </div>
+                    <div class="menu-card-body">
+                        <p class="menu-description">
+                            ঘরোয়া স্বাদের গরম ভাত ও মসুর ডাল। স্বাস্থ্যকর ও পুষ্টিকর।
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-header">
+                        <h3>🥬 সবজি ভর্তা</h3>
+                    </div>
+                    <div class="menu-card-body">
+                        <p class="menu-description">
+                            মৌসুমি সবজি দিয়ে তৈরি ঐতিহ্যবাহী ভর্তা। দেশি স্বাদের নিশ্চয়তা।
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="menu-card-header">
+                        <h3>🫓 নান ও রুটি</h3>
+                    </div>
+                    <div class="menu-card-body">
+                        <p class="menu-description">
+                            তন্দুরে তৈরি গরম নান ও হাতে বানানো মুলায়েম রুটি।
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; color: white;">কেন আমাদের পছন্দ করবেন?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🔥</div>
+                    <h3 class="feature-title">তাজা রান্না</h3>
+                    <p>প্রতিদিন সকালে তাজা উপাদান দিয়ে খাবার তৈরি করি</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">💝</div>
+                    <h3 class="feature-title">সাশ্রয়ী দাম</h3>
+                    <p>মানসম্পন্ন খাবার সবার সাধ্যের মধ্যে রাখার চেষ্টা</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">⭐</div>
+                    <h3 class="feature-title">স্থানীয় প্রিয়</h3>
+                    <p>এলাকার মানুষের ভালোবাসা ও আস্থার জায়গা</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">😊</div>
+                    <h3 class="feature-title">বন্ধুত্বপূর্ণ সেবা</h3>
+                    <p>হাসিমুখে সেবা ও গ্রাহক সন্তুষ্টিই আমাদের লক্ষ্য</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Order Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">যোগাযোগ ও অর্ডার</h2>
+            <div class="contact-content">
+                <div class="contact-card contact-info">
+                    <h3>📞 যোগাযোগের তথ্য</h3>
+                    <div class="contact-detail">
+                        <strong>ফোন/WhatsApp:</strong><br>
+                        ০১৯১৭-৮২১৮২০
+                    </div>
+                    <div class="contact-detail">
+                        <strong>ঠিকানা:</strong><br>
+                        গৌরীপুর বাইপাস রোড<br>
+                        Kachua 3630
+                    </div>
+                    <a href="https://wa.me/8801917821820" class="btn btn-primary" target="_blank">
+                        WhatsApp এ অর্ডার দিন
+                    </a>
+                </div>
+                
+                <div class="order-form">
+                    <h3 style="color: #8B0000; margin-bottom: 25px; text-align: center;">অর্ডার ফর্ম</h3>
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label for="customerName">আপনার নাম *</label>
+                            <input type="text" id="customerName" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerPhone">মোবাইল নম্বর *</label>
+                            <input type="tel" id="customerPhone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="orderDetails">অর্ডারের বিবরণ *</label>
+                            <textarea id="orderDetails" class="form-control" placeholder="কী কী খাবার চান? পরিমাণ উল্লেখ করুন..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">অর্ডার পাঠান</button>
+                        
+                        <div id="successMessage" class="success-message">
+                            ✅ আপনার অর্ডার সফলভাবে পাঠানো হয়েছে! শীঘ্রই আমরা যোগাযোগ করব।
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">আমাদের অবস্থান</h2>
+            <div class="location-card">
+                <h3 style="color: #8B0000; margin-bottom: 20px;">📍 ভাই ভাই হোটেল এন্ড রেস্টুরেন্ট</h3>
+                <div class="location-details">
+                    <p><strong>ঠিকানা:</strong> গৌরীপুর বাইপাস রোড, Kachua 3630</p>
+                    <p><strong>এলাকা:</strong> গৌরীপুর, কচুয়া</p>
+                    <p><strong>সহজ চিহ্ন:</strong> বাইপাস রোডের পাশে, স্থানীয়দের কাছে পরিচিত</p>
+                    <p style="margin-top: 20px; color: #666;">
+                        🚗 সহজে আসা-যাওয়ার ব্যবস্থা<br>
+                        🅿️ পার্কিং সুবিধা উপলব্ধ
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>ভাই ভাই হোটেল এন্ড রেস্টুরেন্ট</h3>
+            <div class="footer-info">
+                📍 গৌরীপুর বাইপাস রোড, Kachua 3630<br>
+                📞 ০১৯১৭-৮২১৮২০<br>
+                🕒 সকাল ৮টা থেকে রাত ১০টা পর্যন্ত খোলা
+            </div>
+            <a href="https://wa.me/8801917821820" class="footer-whatsapp" target="_blank">
+                💬 WhatsApp এ যোগাযোগ করুন
+            </a>
+            <div class="copyright">
+                <p>&copy; ২০২৪ ভাই ভাই হোটেল এন্ড রেস্টুরেন্ট। সকল অধিকার সংরক্ষিত।</p>
+                <p>স্বাদের নিশ্চয়তা, পরিবারের ভরসা</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for menu button
+        document.querySelector('a[href="#menu"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('menu').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Order form handling
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const orderDetails = document.getElementById('orderDetails').value;
+            
+            // Basic validation
+            if (!name || !phone || !orderDetails) {
+                alert('সকল তথ্য পূরণ করুন');
+                return;
+            }
+            
+            // Phone number validation (basic)
+            if (phone.length < 11) {
+                alert('সঠিক মোবাইল নম্বর দিন');
+                return;
+            }
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Optional: Create WhatsApp message
+            const whatsappMessage = `নতুন অর্ডার:%0A%0A👤 নাম: ${name}%0A📱 ফোন: ${phone}%0A🍽️ অর্ডার: ${orderDetails}`;
+            
+            // Reset form
+            setTimeout(() => {
+                this.reset();
+                document.getElementById('successMessage').style.display = 'none';
+                
+                // Optional: Open WhatsApp with pre-filled message
+                if (confirm('WhatsApp এ অর্ডার পাঠাতে চান?')) {
+                    window.open(`https://wa.me/8801917821820?text=${whatsappMessage}`, '_blank');
+                }
+            }, 2000);
+        });
+
+        // Add scroll animation
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.trust-card, .menu-card, .feature-item');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate-on-scroll');
+                }
+            });
+        });
+
+        // Phone number formatting
+        document.getElementById('customerPhone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+            e.target.value = value;
+        });
+
+        // Add loading effect
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
